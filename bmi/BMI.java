@@ -11,10 +11,11 @@ public class BMI{
     System.out.print("Height in meter: ");
     double h = input.nextDouble();
 
-    double bmi = w / (h * h);
+    BMICalculator bmi = new BMICalculator(w, h); 
 
-    System.out.printf("BMI %f%n", bmi);
-
+    System.out.println(bmi);
+    
+    /*
     if (bmi < 18.5)
       System.out.println("Underweight");
     else if (bmi >= 18.5 && bmi <= 24.9)
@@ -23,5 +24,6 @@ public class BMI{
       System.out.println("Overweight");
     else
       System.out.println("Obesity");
+    */
   }
 }
