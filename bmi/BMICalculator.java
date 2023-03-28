@@ -1,39 +1,18 @@
+// calculate bmi
+import java.util.Scanner;
+
 public class BMICalculator{
-  
-  private double height;
-  private double weight;
+  public static void main(String[] args){
+    Scanner input = new Scanner(System.in);
 
-  public BMICalculator(){}
- 
-  public BMICalculator(double weight, double height){
-    this.height = height;
-    this.weight = weight;  
-  }
+    System.out.print("Weight in kilogram: ");
+    double w = input.nextDouble();
 
-  public void setHeight(double height){
-    this.height = height;
-  }
+    System.out.print("Height in meter: ");
+    double h = input.nextDouble();
 
-  public void setWeight(double weight){
-    this.weight = weight;
-  }
+    BMI bmi = new BMI(w, h); 
 
-  public double getHeight(){
-    return this.height;
-  }
-
-  public double getWeight(){
-    return this.weight;
-  }
-
-  public double getBmi(){
-    if(this.height > 0)
-      return this.weight / (this.height * this.height);
-    else
-      return 0;
-  }
-
-  public  String toString(){
-    return "BMI: " + getBmi();
+    System.out.println(bmi);
   }
 }

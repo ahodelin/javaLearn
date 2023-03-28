@@ -1,29 +1,55 @@
-// calculate bmi
-import java.util.Scanner;
-
 public class BMI{
-  public static void main(String[] args){
-    Scanner input = new Scanner(System.in);
+  
+  private double height;
+  private double weight;
 
-    System.out.print("Weight in kilogram: ");
-    double w = input.nextDouble();
+  public BMI(){}
+ 
+  public BMI(double weight, double height){
+    this.height = height;
+    this.weight = weight;  
+  }
 
-    System.out.print("Height in meter: ");
-    double h = input.nextDouble();
+  public void setHeight(double height){
+    this.height = height;
+  }
 
-    BMICalculator bmi = new BMICalculator(w, h); 
+  public void setWeight(double weight){
+    this.weight = weight;
+  }
 
-    System.out.println(bmi);
-    
-    /*
-    if (bmi < 18.5)
-      System.out.println("Underweight");
-    else if (bmi >= 18.5 && bmi <= 24.9)
-      System.out.println("Normal weight");
-    else if (bmi > 24.9 && bmi <= 29.9)
-      System.out.println("Overweight");
+  public double getHeight(){
+    return this.height;
+  }
+
+  public double getWeight(){
+    return this.weight;
+  }
+
+  public double getBmi(){
+    if(this.height > 0)
+      return this.weight / (this.height * this.height);
     else
-      System.out.println("Obesity");
-    */
+      return 0;
+  }
+
+  public String getBmiStatus(){
+    if (this.getBmi() > 0 && this.getBmi() < 18.5)
+      return "Underweight";
+    else if (this.getBmi() >= 18.5 && this.getBmi() <= 24.9)
+      return "Normal weight";
+    else if (this.getBmi() > 24.9 && this.getBmi() <= 29.9)
+      return "Overweight";
+    else if (this.getBmi() > 29.9)
+      return "Obesity";
+    else return "Error";
+
+  }
+
+  public  String toString(){
+    return "Weight: " + this.getWeight() + "\n" +
+      "Height: " + this.getHeight() + "\n" +
+      "BMI: " + getBmi() + "\n" +
+      "Status: " + getBmiStatus();
   }
 }
