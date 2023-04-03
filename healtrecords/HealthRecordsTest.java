@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class HeartRatesTest {
+public class HealthRecordsTest {
 
 	public static void main(String[] args) {
 	Scanner input = new Scanner(System.in);
@@ -20,7 +20,7 @@ public class HeartRatesTest {
         System.out.print("Day of birth: ");
         byte day = input.nextByte();
 
-        HeartRates hr = new HeartRates(firstname, lastname, year, month, day);
+        HealthRecords hr = new HealthRecords(firstname, lastname, year, month, day, "man", 1.76, 65.4);
 		
 	System.out.println(hr);
 
