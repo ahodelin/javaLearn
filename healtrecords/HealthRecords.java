@@ -95,12 +95,14 @@ public class HealthRecords {
   }
    
   public String toString() {
-	  return "Name: " + this.getFirstname() + " " + this.getLastname() + "\n" +
+	  return "****Health Record****\n" +
+      "Name: " + this.getFirstname() + " " + this.getLastname() + "\n" +
+      "Gender: " + this.getGender() + "\n" +
       "Birthday: " + this.getBirthday() + "\n" +
-	  "Age: " + this.age() + " years\n" +
+      "Age: " + this.age() + " years\n" +
       "Maximun heart rate: " + this.getMaxHeartRate() + "\n" +
       "Target heart rate: " + this.getHeartRate50() + " - " + getHeartRate85() + "\n" +
       "Weight: " + this.getWeight() + "kg Height: " + this.getHeight() + "m\n" + 
-      "BMI: " + this.bmi();
+      "BMI: " + String.format("%.2f", this.bmi());
   }
 }

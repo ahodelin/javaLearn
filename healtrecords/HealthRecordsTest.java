@@ -29,13 +29,14 @@ public class HealthRecordsTest {
 		System.out.print("Weight: ");
         	double weight = input.nextDouble();
 
-		//if((gender == "man" || gender == "woman") && firstname != "" && lastname != "" && year > 0 && month > 0 && height > 0 && weight > 0){
+		System.out.println();
+		
+		if(gender != "" && firstname != "" && lastname != "" && year > 0 && month > 0 && height > 0 && weight > 0){
 			HealthRecords hr = new HealthRecords(firstname, lastname, year, month, day, gender, height, weight);
 			System.out.println(hr);
-		//}
-		//else
-		//	System.out.println("Input error.");
-
+		}
+		else
+			System.out.println("Input error.");
 	}
 
 }
