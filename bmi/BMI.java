@@ -33,14 +33,14 @@ public class BMI{
       return 0;
   }
 
-  public String getBmiStatus(){
-    if (this.getBmi() > 0 && this.getBmi() < 18.5)
+  public String getBmiStatus(double bmi){
+    if (bmi > 0 && bmi < 18.5)
       return "Underweight";
-    else if (this.getBmi() >= 18.5 && this.getBmi() <= 24.9)
+    else if (bmi >= 18.5 && bmi <= 24.9)
       return "Normal weight";
-    else if (this.getBmi() > 24.9 && this.getBmi() <= 29.9)
+    else if (bmi > 24.9 && bmi <= 29.9)
       return "Overweight";
-    else if (this.getBmi() > 29.9)
+    else if (bmi > 29.9)
       return "Obesity";
     else return "Error";
 
@@ -49,7 +49,15 @@ public class BMI{
   public  String toString(){
     return "Weight: " + this.getWeight() + "\n" +
       "Height: " + this.getHeight() + "\n" +
-      "BMI: " + getBmi() + "\n" +
-      "Status: " + getBmiStatus();
+      "BMI: " + String.format("%.2f", this.getBmi()) + "\n" +
+      "Status: " + getBmiStatus(this.getBmi());
   }
+
+  public  String toStringGui(){
+    return "<html>Weight: " + this.getWeight() + "<br>" +
+      "Height: " + this.getHeight() + "<br>" +
+      "BMI: " + String.format("%.2f", this.getBmi()) + "<br>" +
+      "Status: " + getBmiStatus(this.getBmi()) + "</html>";
+  }
+
 }
