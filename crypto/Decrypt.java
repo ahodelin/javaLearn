@@ -1,5 +1,3 @@
-//import java.lang.Math.*;
-
 public class Decrypt{
   private String toDecrypt;
 
