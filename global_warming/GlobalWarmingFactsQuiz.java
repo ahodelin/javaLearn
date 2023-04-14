@@ -45,7 +45,28 @@ public class GlobalWarmingFactsQuiz{
      "Mitigating global warming requires collective efforts at individual, national, and global levels. Actions can include reducing greenhouse gas emissions by transitioning to renewable energy sources, improving energy efficiency, conserving and restoring forests, do not promoting sustainable agriculture and transportation, adopting cleaner technologies, and raising awareness about the importance of reducing carbon footprints through lifestyle changes. International cooperation and policy interventions are also necessary to address global warming effectively."
    };
 
-   public int shwoQuiz(){
-     for(i)
+   public String showQuestionWithAnswers(int question){
+
+     String questionAnswersBuilder = (question + 1) + ".) " + this.questions[question] + "\n";
+     
+     String[] answers = new String[4];
+    
+     switch(question){
+       case 0: answers = answers_to_1;
+         break;
+       case 1: answers = answers_to_2;
+         break;
+       case 2: answers = answers_to_3;
+         break;
+       case 3: answers = answers_to_4;
+         break;
+       case 4: answers = answers_to_5;
+         break;
+     } 
+
+     for(int i = 0; i < answers.length; i++)
+       questionAnswersBuilder += "  " + (i + 1) +". " + answers[i] + "\n";
+
+     return questionAnswersBuilder;
    }
 }
