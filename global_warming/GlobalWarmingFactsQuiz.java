@@ -1,9 +1,14 @@
+import java.util.Scanner;
+
 public class GlobalWarmingFactsQuiz{
 
   private String[] questions = {"What is global warming?", "What are the main causes of global warming?", 
     "How does global warming affect the environment?", "What are the consequences of global warming for human health?",
     "What can be done to mitigate global warming?"
   };
+
+  // store anwers
+  private int[] answers = new int[5];
 
    // 2
    private String[] answers_to_1 = {
@@ -45,6 +50,10 @@ public class GlobalWarmingFactsQuiz{
      "Mitigating global warming requires collective efforts at individual, national, and global levels. Actions can include reducing greenhouse gas emissions by transitioning to renewable energy sources, improving energy efficiency, conserving and restoring forests, do not promoting sustainable agriculture and transportation, adopting cleaner technologies, and raising awareness about the importance of reducing carbon footprints through lifestyle changes. International cooperation and policy interventions are also necessary to address global warming effectively."
    };
 
+   public void setAnswerOf(int position, int answer){
+     this.answers[position] = answer;
+   }
+
    public String showQuestionWithAnswers(int question){
 
      String questionAnswersBuilder = (question + 1) + ".) " + this.questions[question] + "\n";
@@ -66,6 +75,12 @@ public class GlobalWarmingFactsQuiz{
 
      for(int i = 0; i < answers.length; i++)
        questionAnswersBuilder += "  " + (i + 1) +". " + answers[i] + "\n";
+
+     Scanner input = new Scanner(System.in);
+     System.out.print("Select an anwwer (1 to 4).");
+     int answer = input.nextInt();
+
+     setAnswerOf(question, (answer - 1));
 
      return questionAnswersBuilder;
    }
