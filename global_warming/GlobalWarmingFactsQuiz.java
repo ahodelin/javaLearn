@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class GlobalWarmingFactsQuiz{
 
@@ -8,7 +7,8 @@ public class GlobalWarmingFactsQuiz{
   };
 
   // store anwers
-  private int[] answers = new int[5];
+  private int[] position_answers = new int[5];
+  private boolean[] user_answers = new boolean[5];
 
    // 2
    private String[] answers_to_1 = {
@@ -50,8 +50,22 @@ public class GlobalWarmingFactsQuiz{
      "Mitigating global warming requires collective efforts at individual, national, and global levels. Actions can include reducing greenhouse gas emissions by transitioning to renewable energy sources, improving energy efficiency, conserving and restoring forests, do not promoting sustainable agriculture and transportation, adopting cleaner technologies, and raising awareness about the importance of reducing carbon footprints through lifestyle changes. International cooperation and policy interventions are also necessary to address global warming effectively."
    };
 
-   public void setAnswerOf(int position, int answer){
-     this.answers[position] = answer;
+   public void setAnswers(int position, int answer){
+
+     if((position >= 0 && position <= 4) && (answer >= 1 && answer <= 4)){
+        this.position_answers[position] = answer;
+
+       if(position == 0 && answer == 2)
+         this.user_answers[position] = true;
+       if(position == 1 && answer == 1)
+         this.user_answers[position] = true;
+       if(position == 2 && answer == 3)
+         this.user_answers[position] = true;
+       if(position == 3 && answer == 3)
+         this.user_answers[position] = true;
+       if(position == 4 && answer == 2)
+         this.user_answers[position] = true;
+     }
    }
 
    public String showQuestionWithAnswers(int question){
@@ -73,15 +87,56 @@ public class GlobalWarmingFactsQuiz{
          break;
      } 
 
-     for(int i = 0; i < answers.length; i++)
-       questionAnswersBuilder += "  " + (i + 1) +". " + answers[i] + "\n";
-
-     Scanner input = new Scanner(System.in);
-     System.out.print("Select an anwwer (1 to 4).");
-     int answer = input.nextInt();
-
-     setAnswerOf(question, (answer - 1));
+     for(int q = 0; q < answers.length; q++)
+       questionAnswersBuilder += "  " + (q + 1) +". " + answers[q] + "\n";
 
      return questionAnswersBuilder;
+   }
+
+   public int[] getAnswers (){
+     return this.position_answers;
+   }
+
+   public int getNote(){
+     int note = 0;
+     for(int q = 0; q < this.user_answers.length; q++)
+       if(user_answers[q])
+         note ++;
+
+     return note;
+   }
+
+   public String getQualification(){
+     int n = this.getNote();
+     String quali = "";
+     switch (n){
+       case 5: quali = "Excellent!";
+	 break;
+       case 4: quali = "Very good!";
+	 break;
+       default: quali = "Time to brush up on your knowledge of global warming";
+	 break;
+     }
+
+     String right_answer = "\n\n";
+     
+     for(int q = 0; q < this.user_answers.length; q ++)
+       if(!this.user_answers[q]){
+	 right_answer += "The right answer to question " + (q + 1) + " is ";
+         switch(q){
+       	   case 0: right_answer += "2: \n" + answers_to_1[1] + "\n \n";
+	     break;
+           case 1: right_answer += "1: \n" + answers_to_2[0] + "\n \n";
+             break;
+           case 2: right_answer += "3: \n" + answers_to_3[2] + "\n \n";
+             break;
+	   case 3: right_answer += "3: \n" + answers_to_4[2] + "\n \n";
+             break;
+	   case 4: right_answer += "2: \n" + answers_to_5[1] + "\n \n";
+             break;
+	 }
+       }
+
+     return "Your note is: " + n + "\n" + quali + right_answer;
    }
 }
