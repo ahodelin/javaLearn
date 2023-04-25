@@ -5,19 +5,23 @@ import java.util.Scanner;
 public class Multiplication{
   private static final SecureRandom randomNumbers = new SecureRandom();
 
-  public static void multiplication (){
+  public static boolean multiplication (){
     byte number1 = (byte)(1 + randomNumbers.nextInt(10));
     byte number2 = (byte)(1 + randomNumbers.nextInt(10));
 
     Scanner input = new Scanner(System.in);
 
-    System.out.print("How much is " + number1 + " x " + number2 + "? ");
+    System.out.print( number1 + " x " + number2 + " = ");
     byte result = input.nextByte();
+
+    boolean right = true;
 
     SecureRandom answerRandom = new SecureRandom();
     byte answer = 0;
 
     while (result != number1 * number2){
+
+      right = false;
 
       answer = (byte)(answerRandom.nextInt(4));
 
@@ -31,7 +35,7 @@ public class Multiplication{
         default: System.out.println("No. Keep trying.");
       }
 
-      System.out.print("How much is " + number1 + " x " + number2 + "? ");
+      System.out.print(number1 + " x " + number2 + " = ");
       result = input.nextByte();
     }
 
@@ -45,5 +49,6 @@ public class Multiplication{
         break;
       default: System.out.println("Keep up the good work!");
     }
+    return right;
   }
 }
