@@ -5,14 +5,25 @@ import java.util.Scanner;
 public class Multiplication{
   private static final SecureRandom randomNumbers = new SecureRandom();
 
-  public static boolean multiplication (){
-    byte number1 = (byte)(1 + randomNumbers.nextInt(10));
-    byte number2 = (byte)(1 + randomNumbers.nextInt(10));
+  public static boolean multiplication (byte difficulty){
+    short interval = 1;
+
+    switch(difficulty){
+      case 1: interval *= 10;
+         break;
+      case 2: interval *= 100;
+         break;
+      default: interval *= 1000;
+        break;
+    }
+        
+    short number1 = (short)(1 + randomNumbers.nextInt(interval));
+    short number2 = (short)(1 + randomNumbers.nextInt(interval));
 
     Scanner input = new Scanner(System.in);
 
     System.out.print( number1 + " x " + number2 + " = ");
-    byte result = input.nextByte();
+    int result = input.nextByte();
 
     boolean right = true;
 
@@ -50,5 +61,16 @@ public class Multiplication{
       default: System.out.println("Keep up the good work!");
     }
     return right;
+  }
+
+  public static byte instructor (byte difficulty){
+    byte pointsMult = 0;
+
+    for(int i = 0; i < 10; i++){
+      if(multiplication(difficulty))
+        pointsMult ++;
+    }
+
+    return pointsMult;
   }
 }

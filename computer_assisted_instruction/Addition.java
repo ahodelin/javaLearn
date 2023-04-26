@@ -5,14 +5,26 @@ import java.util.Scanner;
 public class Addition{
   private static final SecureRandom randomNumbers = new SecureRandom();
 
-  public static boolean addition (){
-    byte number1 = (byte)(1 + randomNumbers.nextInt(10));
-    byte number2 = (byte)(1 + randomNumbers.nextInt(10));
+  public static boolean addition (byte difficulty){
+
+    short interval = 1;
+
+    switch(difficulty){
+      case 1: interval *= 10;
+        break;
+      case 2: interval *= 100;
+        break;
+      default: interval *= 1000;
+        break;
+    }
+
+    short number1 = (short)(1 + randomNumbers.nextInt(interval));
+    short number2 = (short)(1 + randomNumbers.nextInt(interval));
 
     Scanner input = new Scanner(System.in);
 
     System.out.print(number1 + " + " + number2 + " = ");
-    byte result = input.nextByte();
+    int result = input.nextInt();
 
     boolean right = true;
 
@@ -52,4 +64,14 @@ public class Addition{
     return right;  
   }
 
+  public static byte instructor (byte difficulty){
+    byte pointsAdd = 0;
+
+    for(int i = 0; i < 10; i++){
+      if(addition(difficulty))
+        pointsAdd ++;
+    }
+
+    return pointsAdd;
+  }
 }

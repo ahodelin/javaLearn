@@ -1,84 +1,66 @@
+import java.util.Scanner;
+import java.security.SecureRandom;
+
 public class ComputerAssistedInstruction{
+  private static final SecureRandom randomNumbers = new SecureRandom();
+
   public static void main (String[] args){
-      Multiplication m = new Multiplication();
 
-      Addition a = new Addition();
+      Scanner input = new Scanner(System.in);
 
-      Substraction s = new Substraction();
+      System.out.print("Insert a difficulty grad between 1 and 3: ");
+      byte difficulty = input.nextByte();
 
-      Division d = new Division();
+      System.out.println("Insert the type of problems:");
+      System.out.println("Only Addition: 1");
+      System.out.println("Only Substraction: 2");
+      System.out.println("Only Multiplication: 3");
+      System.out.println("Only Division: 4");
+      System.out.print("Random mix of all aritmethic operations: 5 ");
 
-//      instructor(m);
+      byte problemType = input.nextByte();
+      byte score = 0;
 
-//      instructor(a);
+      switch(problemType){
+        case 1: score = Addition.instructor(difficulty);
+          break;
+        case 2: score = Substraction.instructor(difficulty);
+          break;
+        case 3: score = Multiplication.instructor(difficulty);
+          break;
+        case 4: score = Addition.instructor(difficulty);
+          break;
+        default: score = randomOperaions(difficulty);
+          break;
+      }
 
-//      instructor(s);
-
-      instructor(d);
-//    Addition.addition();
-
-//    Substraction.substraction();
-
-  //  Division.division();
+      if(score < 7)
+        System.out.println("Please ask your teacher for extra help.");
+      else
+        System.out.println("Congratulations, you are ready to go to the next level!");
   }
 
-  public static void instructor (Multiplication mult){
-    System.out.println("Miltiplication");
-    byte pointsMult = 0;
-   
-    for(int i = 0; i < 10; i++){
-      if(Multiplication.multiplication())
-        pointsMult ++;
+  public static byte randomOperaions(byte difficulty){
+    boolean right = true;
+    byte scoreOperations = 0;
+
+    for(byte i = 0; i < 10; i++){
+      
+      byte operation = (byte)(1 + randomNumbers.nextInt(4));
+      
+      switch(operation){
+        case 1: right = Addition.addition(difficulty);
+          break;
+        case 2: right = Substraction.substraction(difficulty);
+          break;
+        case 3: right = Multiplication.multiplication(difficulty);
+          break;
+        case 4: right = Division.division(difficulty);
+          break;
+      }
+      if(right)
+        scoreOperations++;
     }
-
-    if(pointsMult < 7)
-      System.out.println("Please ask your teacher for extra help.");
-    else
-      System.out.println("Congratulations, you are ready to go to the next level!");
-  }
-
-  public static void instructor (Addition add){
-    System.out.println("Addition");
-    byte pointsAdd = 0;
-
-    for(int i = 0; i < 10; i++){
-      if(Addition.addition())
-        pointsAdd ++;
-    }
-
-    if(pointsAdd < 7)
-      System.out.println("Please ask your teacher for extra help.");
-    else
-      System.out.println("Congratulations, you are ready to go to the next level!");
-  }
-
-  public static void instructor (Substraction sub){
-    System.out.println("Substraction");
-    byte pointsSub = 0;
-
-    for(int i = 0; i < 10; i++){
-      if(Substraction.substraction())
-        pointsSub ++;
-    }
-
-    if(pointsSub < 7)
-      System.out.println("Please ask your teacher for extra help.");
-    else
-      System.out.println("Congratulations, you are ready to go to the next level!");
-  }
-
-  public static void instructor (Division div){
-    System.out.println("Division");
-    byte pointsDiv = 0;
-
-    for(int i = 0; i < 10; i++){
-      if(Division.division())
-        pointsDiv ++;
-    }
-
-    if(pointsDiv < 7)
-      System.out.println("Please ask your teacher for extra help.");
-    else
-      System.out.println("Congratulations, you are ready to go to the next level!");
+    return scoreOperations;
   }
 }

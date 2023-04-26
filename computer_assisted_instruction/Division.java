@@ -5,11 +5,21 @@ import java.util.Scanner;
 public class Division{
   private static final SecureRandom randomNumbers = new SecureRandom();
 
-  public static boolean division (){
-    byte number1 = (byte)(1 + randomNumbers.nextInt(10));
-    byte number2 = (byte)(1 + randomNumbers.nextInt(10));
+  public static boolean division (byte difficulty){
+
+    short interval = 1;
+    switch(difficulty){
+      case 1: interval *= 10;
+        break;
+      case 2: interval *= 100;
+        break;
+      default: interval *= 1000;
+    }
+
+    short number1 = (short)(1 + randomNumbers.nextInt(interval));
+    short number2 = (short)(1 + randomNumbers.nextInt(interval));
     
-    byte tmp = number1;
+    short tmp = number1;
 
     if(number2 > number1){
       number1 = number2;
@@ -19,7 +29,7 @@ public class Division{
     Scanner input = new Scanner(System.in);
 
     System.out.print(number1 + " / " + number2 + " = ");
-    byte result = input.nextByte();
+    int result = input.nextByte();
 
     boolean right = true;
 
@@ -55,5 +65,16 @@ public class Division{
       default: System.out.println("Keep up the good work!");
     }
     return right;
+  }
+
+  public static byte instructor (byte difficulty){
+    byte pointsDiv = 0;
+
+    for(int i = 0; i < 10; i++){
+      if(division(difficulty))
+        pointsDiv ++;
+    }
+
+    return pointsDiv;
   }
 }
