@@ -1,20 +1,23 @@
+import java.security.SecureRandom;
+
 public class DeckOfCards{
   private Card[] deck;
   private int currentCard;
   private static final int NUMBER_OF_CARDS = 52;
-  private static final SecureRandom randonNumbers = new SecureRandom();
+  private static final SecureRandom randomNumbers = new SecureRandom();
 
   public DeckOfCards(){
-    Strig[] faces = { "Ace", "Deuce", "Three", "Four", "Five", "Six", 
+    String[] faces = { "Ace", "Deuce", "Three", "Four", "Five", "Six", 
      "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"
     };
 
     String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
 
     deck = new Card[NUMBER_OF_CARDS];
+    currentCard = 0;
 
     for (int count = 0; count < deck.length; count ++)
-      deck[count] = new Card(faces[count % 13], suit[count / 13]);
+      deck[count] = new Card(faces[count % 13], suits[count / 13]);
   }
 
   public void shuffle(){
