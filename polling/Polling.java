@@ -26,9 +26,22 @@ public class Polling{
     return this.responses[0].length;
   }
 
-  public void setResponses(int issue, int rating){
+  public void setResponses(int issue, int rating, int value){
     if(issue < this.responses.length && rating < this.responses[0].length){
-      this.responses[issue][rating] = rating + 1;
+      this.responses[issue][rating] = value + 1;
     }
+  }
+
+  public double[] getResponsesAverages(){
+    double[] averages = new double[getRows()];
+
+    for(int r = 0; r < getRows(); r ++){
+      for(int c = 0; c < getColumns(); c ++){
+        averages[r] += responses[r][c];
+      }
+      averages[r] = averages[r] / getColumns();
+    }
+
+   return averages;
   }
 }
