@@ -6,7 +6,7 @@ public class Interest{
     BigDecimal principal = BigDecimal.valueOf(1000.0);
     BigDecimal rate = BigDecimal.valueOf(0.05);
 
-    System.out.printf("%s20%s%n", "Year", "Amount of deposit");
+    System.out.printf("%s%20s%n", "Year", "Amount of deposit");
 
     for(int year = 1; year <= 10; year ++){
       BigDecimal amount = 
