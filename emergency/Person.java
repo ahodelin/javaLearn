@@ -2,11 +2,13 @@ public class Person{
   private String firstName;
   private String lastName;
   private String phone;
+  private String nature;
 
-  public Person(String firstName, String lastName, String phone){
+  public Person(String firstName, String lastName, String phone, String nature){
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;
+    this.nature = nature;
   }
 
   public void setFirstName(String firstName){
@@ -21,6 +23,10 @@ public class Person{
     this.phone = phone;
   }
 
+  public void setNature(String nature){
+    this.nature = nature;
+  }
+
   public String getFirstName(){
     return this.firstName;
   }
@@ -33,7 +39,11 @@ public class Person{
     return this.phone;
   }
 
+  public String getNature(){
+    return this.nature;
+  }
+
   public String toString(){
-    return String.format("Name: %s %s%nPhone: %s%n", this.getFirstName(), this.getLastName(), this.getPhone());
+    return String.format("Name: %s %s%nPhone: %s%nNature: %s%n", this.getFirstName(), this.getLastName(), this.getPhone(), this.getNature());
   }
 }
