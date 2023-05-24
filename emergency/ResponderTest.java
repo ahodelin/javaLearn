@@ -4,8 +4,7 @@ public class ResponderTest{
       System.out.printf("%-10s%-45s%n",
         responder, responder.getResponder()
       );
-
-    for(Responder responder : Responder.values())
-      System.out.printf("%s%n", responder);
+    Responder r = Responder.POL;
+    System.out.printf("Key: %s Name: %s%n", r, r.getResponder());
   }
 }
