@@ -1,7 +1,7 @@
 public class EmergencyTest{
   public static void main(String[] args){
 
-    Person p = new Person("Pepito", "El Loco", "443025", "asesinato");
+    Person p = new Person("Pepito", "El Loco", "443025");
 
     Address a = new Address("Test City", "La calle del medio", "55331", "Edificio Foxa", "4");
 

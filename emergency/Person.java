@@ -1,14 +1,33 @@
+import java.security.SecureRandom;
+
 public class Person{
   private String firstName;
   private String lastName;
   private String phone;
-  private String nature;
+  private static final int NATURES = 3;
+  private final SecureRandom randomNature = new SecureRandom();
+  private Nature nature;
 
-  public Person(String firstName, String lastName, String phone, String nature){
+
+  public Person(String firstName, String lastName, String phone){
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;
-    this.nature = nature;
+
+    int n = randomNature.nextInt(NATURES);
+
+    switch(n){
+      case 0:
+        this.nature = Nature.CR;
+        break;
+      case 1:
+        this.nature = Nature.ME;
+        break;
+      case 2:
+        this.nature = Nature.FI;
+        break;
+    }
+
   }
 
   public void setFirstName(String firstName){
@@ -23,9 +42,6 @@ public class Person{
     this.phone = phone;
   }
 
-  public void setNature(String nature){
-    this.nature = nature;
-  }
 
   public String getFirstName(){
     return this.firstName;
@@ -40,9 +56,12 @@ public class Person{
   }
 
   public String getNature(){
-    return this.nature;
+    return this.nature.getNature();
   }
 
+  public Nature getNatureKey(){
+    return this.nature;
+  }
   public String toString(){
     return String.format("Name: %s %s%nPhone: %s%nNature: %s%n", this.getFirstName(), this.getLastName(), this.getPhone(), this.getNature());
   }

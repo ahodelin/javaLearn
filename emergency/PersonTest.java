@@ -1,7 +1,9 @@
 public class PersonTest{
   public static void main(String[] args){
-    Person p = new Person("Pepito", "El Loco", "443025", "asesinato");
+    Person p = new Person("Pepito", "El Loco", "443025");
 
     System.out.println(p);
+
+    System.out.println(p.getNatureKey());
   }
 }
