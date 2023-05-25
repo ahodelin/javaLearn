@@ -1,15 +1,15 @@
-//import java.security.SecureRandom;
+import java.security.SecureRandom;
+
 
 public class Emergency{
-  // public static 
   private Person person;
   private Address address;
   private Location location;
   private Time time;
-  //private static final int RESPONDERS = 3;
-  //private final SecureRandom randomResponder = new SecureRandom();
   private Responder responder;
-  //private Nature nature;
+  private final SecureRandom randomStatus = new SecureRandom();
+  private final String[] status = {"to do", "going", "in progress", "redy"};
+  private int intStatus;
 
   public Emergency (Person p, Address a, Location l, Time t){
     this.person = p;
@@ -17,7 +17,9 @@ public class Emergency{
     this.location = l;
     this.time = t;
 
-    //int r = randomResponder.nextInt(RESPONDERS);
+    this.intStatus = randomStatus.nextInt(status.length);
+
+
 
     switch(this.person.getNatureKey()){
       case CR:
@@ -34,6 +36,6 @@ public class Emergency{
   }
 
    public String toString(){
-     return "" + this.person + this.address + this.location + "Time: " + this.time + "\nResponder: " + this.responder.getResponder();
+     return "" + this.person + this.address + this.location + "Time: " + this.time + "\nResponder: " + this.responder.getResponder() + "\nStatus: " + this.status[this.intStatus] ;
    }
 }
