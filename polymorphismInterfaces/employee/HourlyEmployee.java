@@ -1,4 +1,4 @@
-public class HourlyEmployee{
+public class HourlyEmployee extends Employee{
   private double wage;
   private double hours;
 
