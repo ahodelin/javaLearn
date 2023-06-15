@@ -45,24 +45,24 @@ public class PyrollSystemTest{
     for(Employee currentEmployee : employees){
       System.out.println(currentEmployee);
 
-      if( currentEmployee instanceof BasePlusCommissionEmployee() ){
+      if(currentEmployee instanceof BasePlusCommissionEmployee){
         BasePlusCommissionEmployee employee = (BasePlusCommissionEmployee) currentEmployee;
 
-        employee.setBaseSalary(0.10 * employee.getBaseSalary());
+        employee.setBaseSalary(1.10 * employee.getBaseSalary());
 
         System.out.printf(
           "new base salary with 10%% increase is: $%,.2f%n",
-          employee.getBaseSalary();
+          employee.getBaseSalary()
         );
       }
 
       System.out.printf(
         "earned $%,.2f%n%n",
-        currentEmployee.earnings();
+        currentEmployee.earnings()
       );
     }
 
-    for(int j = 0; j < employees.lenght; j++)
+    for(int j = 0; j < employees.length; j++)
       System.out.printf(
         "Employee %d is a %s%n",
         j, employees[j].getClass().getName()
