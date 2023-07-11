@@ -2,8 +2,8 @@ public class Car implements CarbonFootprint{
   private static final double Factor = 2.370;
   private double consumptionPer100Km;
 
-  public Car(double consumpitonPer100Km){
-    if(consumpitonPer100Km < 0)
+  public Car(double consumptionPer100Km){
+    if(consumptionPer100Km < 0)
       throw new IllegalArgumentException("The comsumption per 100 km must be >= 0");
 
     this.consumptionPer100Km = consumptionPer100Km;
