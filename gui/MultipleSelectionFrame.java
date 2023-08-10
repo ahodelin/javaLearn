@@ -27,7 +27,6 @@ public class MultipleSelectionFrame extends JFrame{
     colorJList.setSelectionMode(
       ListSelectionModel.MULTIPLE_INTERVAL_SELECTION
     );
-
     add(new JScrollPane(colorJList));
 
     copyJButton = new JButton("Copy >>>");
