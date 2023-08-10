@@ -18,12 +18,12 @@ public class MouseTrackerFrame extends JFrame{
     mousePanel.setBackground(Color.WHITE);
     add(mousePanel, BorderLayout.CENTER);
 
-    statusBar = JLabel("Mouse outside JPanel");
+    statusBar = new JLabel("Mouse outside JPanel");
     add(statusBar, BorderLayout.SOUTH);
 
     MouseHandler handler = new MouseHandler();
-    MouseHandler.addMouseListener(handler);
-    MouseHandler.addMouseMotionListener(handler);
+    mousePanel.addMouseListener(handler);
+    mousePanel.addMouseMotionListener(handler);
   }
 
   private class MouseHandler implements MouseListener,
@@ -65,8 +65,16 @@ public class MouseTrackerFrame extends JFrame{
     }
 
     @Override
-    public void mouseDraged(MouseEvent event){
-      
+    public void mouseDragged(MouseEvent event){
+      statusBar.setText(String.format("Dragged at [%d, %d]", 
+        event.getX(), event.getY()));
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent event){
+      statusBar.setText(String.format("Moved at [%d, %d]",
+        event.getX(), event.getY()
+      ));
     }
   }
 }
