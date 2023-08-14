@@ -30,7 +30,7 @@ public class MouseTrackerFrame extends JFrame{
     MouseMotionListener{
 
     @Override
-    public void mouseClicked(MouseEvent event) {// aqui pueder ir un apostrofe "'"
+    public void mouseClicked(MouseEvent event) {
       statusBar.setText(String.format("Clicked at [%d, %d]",
         event.getX(), event.getY()
       ));
